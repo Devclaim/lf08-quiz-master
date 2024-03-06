@@ -1,8 +1,8 @@
 <?php
 $username = "root";
 $password = "root";
-$dbname = "jobseekers";
-$servername = "mysql_db"; //docker-compose.yml database name
+$dbname = "quiz";
+$servername = "db"; //docker-compose.yml database name
 $port = 3306;
 $conn = new mysqli($servername, $username, $password, '', $port);
 
@@ -11,9 +11,9 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully.<br>";
 
-$query = "CREATE DATABASE IF NOT EXISTS jobseekers";
+$query = "CREATE DATABASE IF NOT EXISTS quiz";
 if ($conn->query($query) === TRUE) {
-    echo "Database 'jobseekers' created successfully.<br>";
+    echo "Database 'quiz' created successfully.<br>";
 } else {
     echo "Error creating database: " . $conn->error . "<br>";
 }

@@ -9,8 +9,8 @@ services:
     ports:
       - 9000:80
     depends_on:
-      - mysql_db
-  mysql_db:
+      - db
+  db:
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -24,4 +24,4 @@ services:
     environment:
       PMA_ARBITRARY: 1
     depends_on:
-      - mysql_db
+      - db
