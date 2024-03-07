@@ -1,56 +1,8 @@
 <?php
-    $username = "root";
-    $password = "root";
-    $dbname = "quizmaster";
-    $servername = "db"; //docker-compose.yml database name
-    $port = 3306;
-    $conn = new mysqli($servername, $username, $password, '', $port);
+    require 'function.php';
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    echo "Connected successfully.<br>";
-
-    $query = "CREATE DATABASE IF NOT EXISTS quizmaster";
-    if ($conn->query($query) === TRUE) {
-        echo "Database 'quizmaster' created successfully.<br>";
-    } else {
-        echo "Error creating database: " . $conn->error . "<br>";
-    }
-
-    $conn->select_db($dbname);
-
-    $query = "CREATE TABLE IF NOT EXISTS user (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(255) NOT NULL,
-        password VARCHAR(255) NOT NULL
-    )";
-
-    if ($conn->query($query) === TRUE) {
-        echo "Table 'user' created successfully.<br>";
-    } else {
-        echo "Error creating table: " . $conn->error . "<br>";
-    }
-
-    $insertData = [
-        ['username1', 'password1'],
-        ['username2', 'password2'],
-        ['username3', 'password3']
-    ];
-
-    foreach ($insertData as $data) {
-        $username = $data[0];
-        $password = $data[1];
-
-        $query = "INSERT INTO user (username, password) VALUES ('$username','$password')";
-        if ($conn->query($query) === TRUE) {
-            echo "Data inserted successfully.<br>";
-        } else {
-            echo "Error inserting data: " . $conn->error . "<br>";
-        }
-    }
-
-    $conn->close();
+    $dbcontroller = new DBController();
+    $dbcontroller->initiateDatabase();
 ?>
 
 <!DOCTYPE html>
@@ -61,10 +13,20 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LF08 QuizMaster</title>
-        <link rel="stylesheet" href="css/output.css">
+        <link rel="stylesheet" href="index.css">
     </head>
 
-    <body class="bg-[green] text-white">
-        <h1>Quiz Master</h1>
+    <body class="background-polka">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="headline">Quiz Master</h1>
+                <div class="buttonContainer">
+                    <a class="buttonTeal href="/play.php">Play Game</a>
+                    <a class="button" href="/login.php">Login</a>
+                    <a class="button" href="/registration.php">Register</a>
+                    <a class="button" href="/leaderboard.php">Leaderboard</a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
