@@ -1,7 +1,7 @@
 <?php
-require 'function.php';
+    require 'classes/session.php';
 
-$dbcontroller = new DBController();
-$dbcontroller->resetDatabase();
-
-header("Location: index.php");
+    $dbcontroller = new DBController();
+    $dbcontroller->resetDatabase();
+    
+    header("Location: index.php");

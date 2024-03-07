@@ -1,8 +1,15 @@
 <?php
-    require 'function.php';
+    require 'classes/session.php';
 
     $dbcontroller = new DBController();
     $dbcontroller->initiateDatabase();
+
+    if(!empty($_SESSION["id"])){
+        $user = $dbcontroller->selectUserById($_SESSION["id"]);
+    }
+    else{
+        header("Location: login.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +29,7 @@
                 <h1 class="headline">Quiz Master</h1>
                 <div class="buttonContainer">
                     <a class="buttonTeal href="/play.php">Play Game</a>
-                    <a class="button" href="/login.php">Login</a>
-                    <a class="button" href="/registration.php">Register</a>
-                    <a class="button" href="/leaderboard.php">Leaderboard</a>
+                    <a class="button" href="/logout.php">Logout</a>
                 </div>
             </div>
         </div>

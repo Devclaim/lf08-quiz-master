@@ -1,5 +1,5 @@
 <?php
-    require 'function.php';
+    require 'classes/session.php';
 
     if(!empty($_SESSION["id"])){
         header("Location: index.php");

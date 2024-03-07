@@ -82,4 +82,9 @@ class DBController extends Connection{
 
         $this->conn->query($query);
     }
+
+    public function selectUserById($id){
+        $result = mysqli_query($this->conn, "SELECT * FROM user WHERE id = $id");
+        return mysqli_fetch_assoc($result);
+    }
 }
