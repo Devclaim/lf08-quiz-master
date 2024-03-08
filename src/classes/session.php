@@ -6,6 +6,7 @@ class Connection{
     public $user = "root";
     public $password = "root";
     public $db_name = "quizmaster";
+    public $port = 3306;
     public $conn;
 
     public function __construct(){
@@ -79,8 +80,14 @@ class DBController extends Connection{
 
     public function resetDatabase() {
         $query = "DROP TABLE user";
-
         $this->conn->query($query);
+    }
+
+    public function createDatabase() {
+        $conn = new mysqli("db", $this->user, $this->password, '', $this->port);
+        $query = "CREATE DATABASE IF NOT EXISTS quizmaster";
+        $conn->query($query);
+        mysqli_close($conn);
     }
 
     public function selectUserById($id){

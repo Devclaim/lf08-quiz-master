@@ -2,6 +2,7 @@
     require 'classes/session.php';
 
     $dbcontroller = new DBController();
+    $dbcontroller->createDatabase();
     $dbcontroller->initiateDatabase();
 
     if(!empty($_SESSION["id"])){
