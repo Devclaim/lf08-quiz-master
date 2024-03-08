@@ -4,4 +4,7 @@
 `docker-compose up`
 
 ## install php dependancies
-`php composer.phar install`
+`composer install`
+
+## run PHPUnit test
+`docker-compose run phpunit <test-name>`
