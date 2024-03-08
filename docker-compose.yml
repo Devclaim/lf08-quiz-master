@@ -25,3 +25,9 @@ services:
       PMA_ARBITRARY: 1
     depends_on:
       - db
+  composer:
+    image: composer:2.7.1
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+    volumes:
+      - .:/app
