@@ -2,8 +2,7 @@
     require 'classes/session.php';
 
     $dbcontroller = new DBController();
-    $dbcontroller->createDatabase();
-    $dbcontroller->initiateDatabase();
+    $dbcontroller->initiateTable();
 
     if(!empty($_SESSION["id"])){
         $user = $dbcontroller->selectUserById($_SESSION["id"]);

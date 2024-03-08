@@ -10,6 +10,12 @@ class Connection{
     public $conn;
 
     public function __construct(){
+        //create quizmaster DB if it doesnt exist
+        $temp_conn = new mysqli("db", $this->user, $this->password, '', $this->port);
+        $query = "CREATE DATABASE IF NOT EXISTS quizmaster";
+        $temp_conn->query($query);
+        mysqli_close($temp_conn);
+
         $this->conn = mysqli_connect($this->host, $this->user, $this->password, $this->db_name);
     }
 }
@@ -65,7 +71,7 @@ class Login extends Connection{
 }
 
 class DBController extends Connection{
-    public function initiateDatabase() {
+    public function initiateTable() {
         $query = "CREATE TABLE IF NOT EXISTS user (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
@@ -81,13 +87,6 @@ class DBController extends Connection{
     public function resetDatabase() {
         $query = "DROP TABLE user";
         $this->conn->query($query);
-    }
-
-    public function createDatabase() {
-        $conn = new mysqli("db", $this->user, $this->password, '', $this->port);
-        $query = "CREATE DATABASE IF NOT EXISTS quizmaster";
-        $conn->query($query);
-        mysqli_close($conn);
     }
 
     public function selectUserById($id){
