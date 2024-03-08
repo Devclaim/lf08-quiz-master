@@ -31,7 +31,6 @@ services:
       - COMPOSER_CACHE_DIR=/app/.cache/composer
     volumes:
       - .:/app
-    restart: always
   php:
     image: php:8.1-cli
     volumes:
