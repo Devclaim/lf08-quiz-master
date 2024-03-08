@@ -44,6 +44,7 @@ class Register extends Connection{
 
 class Login extends Connection{
     public $id;
+    public $username;
     public function login($usernameemail, $password){
         $result = mysqli_query($this->conn, "SELECT * FROM user WHERE username = '$usernameemail' OR email = '$usernameemail'");
         $row = mysqli_fetch_assoc($result);
@@ -51,6 +52,7 @@ class Login extends Connection{
         if(mysqli_num_rows($result) > 0){
             if($password == $row["password"]){
                 $this->id = $row["id"];
+                $this->username = $row["username"];
                 return 1;
                 // Login successful
             }
@@ -65,8 +67,11 @@ class Login extends Connection{
         }
     }
 
-    public function idUser(){
+    public function getID(){
         return $this->id;
+    }
+    public function getUsername(){
+        return $this->username;
     }
 }
 

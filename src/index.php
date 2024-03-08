@@ -14,21 +14,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LF08 QuizMaster</title>
-        <link rel="stylesheet" href="index.css">
-    </head>
-
+    <?php include "components/header.php"?>
     <body class="background-polka">
+        <?php include "components/navbar.php"?>
         <div class="wrapper">
             <div class="container">
                 <h1 class="headline">Quiz Master</h1>
                 <div class="buttonContainer">
-                    <a class="buttonTeal href="/play.php">Play Game</a>
+                    <a class="buttonTeal" href="/play.php">Play Game</a>
                     <a class="button" href="/logout.php">Logout</a>
                 </div>
             </div>
