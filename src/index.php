@@ -1,15 +1,17 @@
 <?php
-    require 'classes/session.php';
 
-    $dbcontroller = new DBController();
-    $dbcontroller->initiateTable();
+use classes\DBController;
 
-    if(!empty($_SESSION["id"])){
-        $user = $dbcontroller->selectUserById($_SESSION["id"]);
-    }
-    else{
-        header("Location: login.php");
-    }
+require "classes/DBController.php";
+
+$dbcontroller = new DBController();
+$dbcontroller->initiateTable();
+
+if (!empty($_SESSION["id"])) {
+    $user = $dbcontroller->selectUserById($_SESSION["id"]);
+} else {
+    header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
