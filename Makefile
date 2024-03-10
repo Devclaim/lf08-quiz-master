@@ -11,4 +11,5 @@ install:
 test:
 	docker-compose run phpunit tests/TestTest.php
 lint:
-	docker-compose run phpstan analys src tests
+	docker-compose run phpcs --standard=PSR12 src
+	docker-compose run phpstan analyse src tests
